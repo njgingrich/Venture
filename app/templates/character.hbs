@@ -2,5 +2,42 @@
 <span>Name: {{ model.name }}</span>
 <br>
 <span>Health: {{ model.health }}</span>
+<br>
+<span>Mana: {{ model.mana }}</span>
+</div>
+<br>
+<div class="attr">
+  <table>
+    <tr>
+      <th>Stat</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td><button {{action "decreaseStat" "strength"}}>-</button></td>
+      <td>Strength</td>
+      <td>{{ model.strength }}</td>
+      <td><button {{action "increaseStat" "strength"}}>+</button></td>
+    </tr>
+    <tr>
+      <td>Intelligence</td>
+      <td>{{ model.intelligence }}</td>
+    </tr>
+    <tr>
+      <td>Wisdom</td>
+      <td>{{ model.wisdom }}</td>
+    </tr>
+    <tr>
+      <td>Dexterity</td>
+      <td>{{ model.dexterity }}</td>
+    </tr>
+    <tr>
+      <td>Constitution</td>
+      <td>{{ model.constitution }}</td>
+    </tr>
+    <tr>
+      <td>Charisma</td>
+      <td>{{ model.charisma }}</td>
+    </tr>
+  </table>
 </div>
 <button {{ action 'levelUp' }}>Level Up</button>
