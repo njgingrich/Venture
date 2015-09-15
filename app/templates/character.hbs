@@ -1,13 +1,15 @@
 <div>
 <span>Name: {{ model.name }}</span>
 <br>
+<span>Level: {{ model.level }}</span>
+<br>
 <span>Health: {{ model.health }}</span>
 <br>
 <span>Mana: {{ model.mana }}</span>
 </div>
 <br>
 <div class="attr">
-  <table>
+  <table style="border: 1px solid gray;">
     <tr>
       <th>Stat</th>
       <th>Value</th>
@@ -19,24 +21,34 @@
       <td><button {{action "increaseStat" "strength"}}>+</button></td>
     </tr>
     <tr>
+      <td><button {{action "decreaseStat" "intelligence"}}>-</button></td>
       <td>Intelligence</td>
       <td>{{ model.intelligence }}</td>
+      <td><button {{action "increaseStat" "intelligence"}}>+</button></td>
     </tr>
     <tr>
+      <td><button {{action "decreaseStat" "wisdom"}}>-</button></td>
       <td>Wisdom</td>
       <td>{{ model.wisdom }}</td>
+      <td><button {{action "increaseStat" "wisdom"}}>+</button></td>
     </tr>
     <tr>
+      <td><button {{action "decreaseStat" "dexterity"}}>-</button></td>
       <td>Dexterity</td>
       <td>{{ model.dexterity }}</td>
+      <td><button {{action "increaseStat" "dexterity"}}>+</button></td>
     </tr>
     <tr>
+      <td><button {{action "decreaseStat" "constitution"}}>-</button></td>
       <td>Constitution</td>
       <td>{{ model.constitution }}</td>
+      <td><button {{action "increaseStat" "constitution"}}>+</button></td>
     </tr>
     <tr>
+      <td><button {{action "decreaseStat" "charisma"}}>-</button></td>
       <td>Charisma</td>
       <td>{{ model.charisma }}</td>
+      <td><button {{action "increaseStat" "charisma"}}>+</button></td>
     </tr>
   </table>
 </div>

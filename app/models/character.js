@@ -1,17 +1,20 @@
 import Ember from 'ember';
 
+const BASE_HP = 40;
+const BASE_MANA = 30;
+
 export default Ember.Object.extend({
   strength: 12,
   intelligence: 1,
-  widsom: 2,
+  wisdom: 2,
   dexterity: 8,
   constitution: 17,
   charisma: 18,
   health: Ember.computed('level', 'constitution', function() {
-    return 40 + (this.get('constitution') * this.get('level'));
+    return BASE_HP + (this.get('constitution') * this.get('level'));
   }),
   mana: Ember.computed('level', 'intelligence', function() {
-    return 30 + (this.get('intelligence') * this.get('level'));
+    return BASE_MANA + (this.get('intelligence') * this.get('level'));
   }),
   level: 1,
 
