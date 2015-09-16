@@ -3,16 +3,18 @@
 <br>
 <span>Level: {{ model.level }}</span>
 <br>
-<span>Health: {{ model.health }}</span>
+<span>Health: {{ model.maxHealth }}</span>
 <br>
-<span>Mana: {{ model.mana }}</span>
+<span>Mana: {{ model.maxMana }}</span>
 </div>
 <br>
 <div class="attr">
   <table style="border: 1px solid gray;">
     <tr>
+      <th>-</th>
       <th>Stat</th>
       <th>Value</th>
+      <th>+</th>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "strength"}}>-</button></td>
