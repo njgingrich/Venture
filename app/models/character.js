@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Item from './item';
 
 const BASE_HP = 40;
 const BASE_MANA = 30;
@@ -19,6 +20,24 @@ export default Ember.Object.extend({
   }),
   maxMana: Ember.computed('level', 'intelligence', function() {
     return BASE_MANA + (this.get('intelligence') * this.get('level'));
+  }),
+  maxWeight: Ember.computed('strength', function() {
+    return this.get('strength')*5;
+  }),
+  itemWeights: Ember.computed.mapBy('items', 'weight'),
+  itemWeight: Ember.computed.sum('itemWeigts'),
+  hampered: Ember.computed('itemWeight', 'maxWeight', function() {
+    return this.get('itemWeight') > this.get('maxWeight');
+  }),
+
+  items: Ember.computed(function() {
+    return [Item.create({
+      name: "Magic Sword of Life",
+      weight: 10,
+      bonuses: {
+        constitution: 3
+      }
+    })];
   }),
   level: 1,
   strength: 12,

@@ -1,14 +1,21 @@
 <div>
-<span>Name: {{ model.name }}</span>
+<span>Name: {{ character.name }}</span>
 <br>
-<span>Level: {{ model.level }}</span>
+<span>Level: {{ character.level }}</span>
 <br>
-<span>Health: {{ model.maxHealth }}</span>
+<span>Health: {{ character.maxHealth }}</span>
 <br>
-<span>Mana: {{ model.maxMana }}</span>
+<span>Mana: {{ character.maxMana }}</span>
 </div>
 <br>
-<div class="attr">
+{{#if character.hampered}}
+<h3>I'm tired...</h3>
+{{/if}}
+<br>
+<div>
+Stats:
+</div>
+<div>
   <table style="border: 1px solid gray;">
     <tr>
       <th>-</th>
@@ -19,39 +26,62 @@
     <tr>
       <td><button {{action "decreaseStat" "strength"}}>-</button></td>
       <td>Strength</td>
-      <td>{{ model.strength }}</td>
+      <td>{{ character.strength }}</td>
       <td><button {{action "increaseStat" "strength"}}>+</button></td>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "intelligence"}}>-</button></td>
       <td>Intelligence</td>
-      <td>{{ model.intelligence }}</td>
+      <td>{{ character.intelligence }}</td>
       <td><button {{action "increaseStat" "intelligence"}}>+</button></td>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "wisdom"}}>-</button></td>
       <td>Wisdom</td>
-      <td>{{ model.wisdom }}</td>
+      <td>{{ character.wisdom }}</td>
       <td><button {{action "increaseStat" "wisdom"}}>+</button></td>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "dexterity"}}>-</button></td>
       <td>Dexterity</td>
-      <td>{{ model.dexterity }}</td>
+      <td>{{ character.dexterity }}</td>
       <td><button {{action "increaseStat" "dexterity"}}>+</button></td>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "constitution"}}>-</button></td>
       <td>Constitution</td>
-      <td>{{ model.constitution }}</td>
+      <td>{{ character.constitution }}</td>
       <td><button {{action "increaseStat" "constitution"}}>+</button></td>
     </tr>
     <tr>
       <td><button {{action "decreaseStat" "charisma"}}>-</button></td>
       <td>Charisma</td>
-      <td>{{ model.charisma }}</td>
+      <td>{{ character.charisma }}</td>
       <td><button {{action "increaseStat" "charisma"}}>+</button></td>
     </tr>
   </table>
+</div>
+<br>
+<div>
+  Items: <button {{ action 'addItem' }}>Add</button>
+</div>
+<div>
+  {{#if hasItems}}
+    <table style="border: 1px solid gray;">
+      <tr>
+        <th>Name</th>
+        <th>Details</th>
+      </tr>
+    {{#each character.items as |item|}}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.weight }}</td>
+        <td><button {{ action 'removeItem' item }}>X</button></td>
+      </tr>
+    {{/each}}
+    </table>
+  {{else}}
+    <div>You don't have any items.</div>
+  {{/if}}
 </div>
 <button {{ action 'levelUp' }}>Level Up</button>
