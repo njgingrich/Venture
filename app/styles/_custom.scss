@@ -2,6 +2,10 @@
 //
 //## Font and other css for character page.
 
+$characterHealth:  #e51227;
+$characterMana:    #2cb9ce;
+$characterLevel:   #1eb630;
+
 .character-name {
   font-weight: bold;
   font-size: 3.2em;
@@ -15,6 +19,18 @@
 .character-detail {
   font-weight: bold;
   font-size: 1.2em;
+}
+
+.character-health {
+    color: $characterHealth;
+}
+
+.character-mana {
+    color: $characterMana;
+}
+
+.character-level {
+    color: $characterLevel;
 }
 
 .centered {
