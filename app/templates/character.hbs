@@ -1,87 +1,95 @@
-<div>
-<span>Name: {{ character.name }}</span>
-<br>
-<span>Level: {{ character.level }}</span>
-<br>
-<span>Health: {{ character.maxHealth }}</span>
-<br>
-<span>Mana: {{ character.maxMana }}</span>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+    <h1 class="character-name">{{ character.name }}</h1>
+    <span class="col-xs-4 character-detail">Level: {{ character.level }}</span>
+    <span class="col-xs-4 character-detail">Health: {{ character.maxHealth }}</span>
+    <span class="col-xs-4 character-detail">Mana: {{ character.maxMana }}</span>
+  </div>
 </div>
 <br>
-{{#if character.hampered}}
-<h3>I'm tired...</h3>
-{{/if}}
-<br>
-<div>
-Stats:
-</div>
-<div>
-  <table style="border: 1px solid gray;">
-    <tr>
-      <th>-</th>
-      <th>Stat</th>
-      <th>Value</th>
-      <th>+</th>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "strength"}}>-</button></td>
-      <td>Strength</td>
-      <td>{{ character.strength }}</td>
-      <td><button {{action "increaseStat" "strength"}}>+</button></td>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "intelligence"}}>-</button></td>
-      <td>Intelligence</td>
-      <td>{{ character.intelligence }}</td>
-      <td><button {{action "increaseStat" "intelligence"}}>+</button></td>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "wisdom"}}>-</button></td>
-      <td>Wisdom</td>
-      <td>{{ character.wisdom }}</td>
-      <td><button {{action "increaseStat" "wisdom"}}>+</button></td>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "dexterity"}}>-</button></td>
-      <td>Dexterity</td>
-      <td>{{ character.dexterity }}</td>
-      <td><button {{action "increaseStat" "dexterity"}}>+</button></td>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "constitution"}}>-</button></td>
-      <td>Constitution</td>
-      <td>{{ character.constitution }}</td>
-      <td><button {{action "increaseStat" "constitution"}}>+</button></td>
-    </tr>
-    <tr>
-      <td><button {{action "decreaseStat" "charisma"}}>-</button></td>
-      <td>Charisma</td>
-      <td>{{ character.charisma }}</td>
-      <td><button {{action "increaseStat" "charisma"}}>+</button></td>
-    </tr>
-  </table>
-</div>
-<br>
-<div>
-  Items: <button {{ action 'addItem' }}>Add</button>
-</div>
-<div>
-  {{#if hasItems}}
-    <table style="border: 1px solid gray;">
-      <tr>
-        <th>Name</th>
-        <th>Details</th>
-      </tr>
-    {{#each character.items as |item|}}
-      <tr>
-        <td>{{ item.name }}</td>
-        <td>{{ item.weight }}</td>
-        <td><button {{ action 'removeItem' item }}>X</button></td>
-      </tr>
-    {{/each}}
-    </table>
-  {{else}}
-    <div>You don't have any items.</div>
-  {{/if}}
-</div>
-<button {{ action 'levelUp' }}>Level Up</button>
+<div class="row">
+  <div class="col-xs-4">
+    <div>
+      <i class="fa fa-bar-chart-o fa-3x"></i>&nbsp;<span class="character-header">Stats <button class="btn btn-info" {{ action 'levelUp' }}>Level Up</button></span>
+      <table class="centered table table-striped">
+        <thead>
+          <tr>
+            <th class="col-sm-6">Stat</th>
+            <th class="col-sm-2">Value</th>
+            <th class="col-sm-2">Lower</th>
+            <th class="col-sm-2">Raise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-sm-6">Strength</td>
+            <td class="col-sm-2">{{ character.strength }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "strength"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "strength"}}>+</button></td>
+          </tr>
+          <tr>
+            <td class="col-sm-6">Intelligence</td>
+            <td class="col-sm-2">{{ character.intelligence }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "intelligence"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "intelligence"}}>+</button></td>
+          </tr>
+          <tr>
+            <td class="col-sm-6">Wisdom</td>
+            <td class="col-sm-2">{{ character.wisdom }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "wisdom"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "wisdom"}}>+</button></td>
+          </tr>
+          <tr>
+            <td class="col-sm-6">Dexterity</td>
+            <td class="col-sm-2">{{ character.dexterity }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "dexterity"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "dexterity"}}>+</button></td>
+          </tr>
+          <tr>
+            <td class="col-sm-6">Constitution</td>
+            <td class="col-sm-2">{{ character.constitution }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "constitution"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "constitution"}}>+</button></td>
+          </tr>
+          <tr>
+            <td class="col-sm-6">Charisma</td>
+            <td class="col-sm-2">{{ character.charisma }}</td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "charisma"}}>-</button></td>
+            <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "charisma"}}>+</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-6 col-xs-offset-2">
+    <div>
+      <i class="fa fa-diamond fa-3x"></i>&nbsp;<span class="character-header">Items <button class="btn btn-info" {{ action 'addItem' }}>Add</button></span>
+      {{#if hasItems}}
+        <table class="centered table table-striped">
+          <thead>
+            <tr>
+              <th class="col-xs-6">Name</th>
+              <th class="col-xs-2">Weight</th>
+              <th class="col-xs-1"><i class="fa fa-heart-o"></i></th>
+              <th class="col-xs-1"><i class="fa fa-hand-rock-o"></i></th>
+              <th class="col-xs-2">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each character.items as |item|}}
+            <tr>
+              <td class="col-xs-6">{{ item.name }}</td>
+              <td class="col-xs-2">{{ item.weight }}</td>
+              <td class="col-xs-1">{{ item.bonuses.constitution }}</td>
+              <td class="col-xs-1">{{ item.bonuses.strength }}</td>
+              <td class="col-xs-2"><button class="btn btn-info" {{ action 'removeItem' item }}>X</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <div>You don't have any items.</div>
+      {{/if}}
+    </div>
+  </div>
+</div> <!-- row -->

@@ -1,1 +1,7 @@
+@import "custom";
+@import "variables";
 @import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
+
+body {
+  padding-top: 70px;
+}
