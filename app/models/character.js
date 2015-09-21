@@ -24,10 +24,10 @@ export default Ember.Object.extend({
   maxWeight: Ember.computed('strength', function() {
     return this.get('strength')*5;
   }),
-  itemWeights: Ember.computed.mapBy('items', 'weight'),
-  itemWeight: Ember.computed.sum('itemWeigts'),
-  hampered: Ember.computed('itemWeight', 'maxWeight', function() {
-    return this.get('itemWeight') > this.get('maxWeight');
+  itemWeights: Ember.computed.mapBy('items','weight'),
+  itemWeight: Ember.computed.sum('itemWeights'),
+  hampered: Ember.computed('itemWeight','maxWeight', function(){
+     return this.get('itemWeight') > this.get('maxWeight');
   }),
 
   items: Ember.computed(function() {

@@ -1,9 +1,39 @@
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3 text-center">
     <h1 class="character-name">{{ character.name }}</h1>
-    <span class="col-xs-4 character-detail">Level: <span class="character-level">{{ character.level }}</span></span>
-    <span class="col-xs-4 character-detail">Health: <span class="character-health">{{ character.maxHealth }}</span></span>
-    <span class="col-xs-4 character-detail">Mana: <span class="character-mana">{{ character.maxMana }}</span></span>
+    <div class="level">
+        <span class="character-detail">Level: <span class="character-level">{{ character.level }}</span></span>
+    </div>
+    <div class="character-detail">Health</div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 100%">
+        {{character.maxHealth}}/{{character.maxHealth}}
+      </div>
+    </div>
+    <div class="character-detail">Mana</div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 100%">
+        {{character.maxMana}}/{{character.maxMana}}
+      </div>
+    </div>
+    <div class="character-detail">Weight</div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning" role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: {{burdenPercent}}%">
+        {{character.itemWeight}}/{{character.maxWeight}}
+      </div>
+    </div>
   </div>
 </div>
 <br>
