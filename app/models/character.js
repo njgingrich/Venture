@@ -15,8 +15,8 @@ export default Ember.Object.extend({
     var classes = ['Wizard', 'Warrior', 'Bard', 'Paladin', 'Rogue', 'Ranger', 'Knight', 'Elf'];
     return classes[Math.floor(Math.random()*classes.length)];
   }),
-  maxHealth: Ember.computed('level', 'constitution', function() {
-    return BASE_HP + (this.get('constitution') * this.get('level'));
+  maxHealth: Ember.computed('level', 'effectiveCon', function() {
+    return BASE_HP + (this.get('effectiveCon') * this.get('level'));
   }),
   maxMana: Ember.computed('level', 'intelligence', function() {
     return BASE_MANA + (this.get('intelligence') * this.get('level'));
@@ -38,6 +38,12 @@ export default Ember.Object.extend({
         constitution: 3
       }
     })];
+  }),
+
+  itemConBonuses: Ember.computed.mapBy('items', 'bonuses.constitution'),
+  conBonus: Ember.computed.sum('itemConBonuses'),
+  effectiveCon: Ember.computed('conBonus', 'constitution', function() {
+      return this.get('constitution') + this.get('conBonus');
   }),
   level: 1,
   strength: 12,
