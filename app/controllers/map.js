@@ -11,8 +11,8 @@ var MapCell = Ember.Object.extend({
 });
 
 export default Ember.Controller.extend({
-  mapWidth: 4,
-  mapHeight: 3,
+  mapWidth: 20,
+  mapHeight: 12,
 
   map: Ember.computed('mapWidth', 'mapHeight', function() {
    var w = this.get('mapWidth');
