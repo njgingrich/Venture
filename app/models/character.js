@@ -1,10 +1,11 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import Item from './item';
 
 const BASE_HP = 40;
 const BASE_MANA = 30;
 
-export default Ember.Object.extend({
+export default DS.Model.extend({
   name: Ember.computed(function() {
     var firstNames = ['Ragnar', 'Ulfric', 'Balgruf'];
     var lastNames = ['Valiant', 'Bold', 'Strong', 'Dainty'];
@@ -45,11 +46,11 @@ export default Ember.Object.extend({
   effectiveCon: Ember.computed('conBonus', 'constitution', function() {
       return this.get('constitution') + this.get('conBonus');
   }),
-  level: 1,
-  strength: 12,
-  intelligence: 1,
-  wisdom: 2,
-  dexterity: 8,
-  constitution: 17,
-  charisma: 18
+  level:        DS.attr('number', {defaultValue: 1}),
+  strength:     DS.attr('number', {defaultValue: 12}),
+  intelligence: DS.attr('number', {defaultValue: 4}),
+  wisdom:       DS.attr('number', {defaultValue: 6}),
+  dexterity:    DS.attr('number', {defaultValue: 10}),
+  constitution: DS.attr('number', {defaultValue: 15}),
+  charisma:     DS.attr('number', {defaultValue: 13})
 });

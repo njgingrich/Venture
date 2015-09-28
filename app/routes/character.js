@@ -1,9 +1,12 @@
 import Ember from 'ember';
-import Character from 'venture/models/character';
+//import Character from 'venture/models/character';
 
 export default Ember.Route.extend({
   model: function() {
     // todo: load data here
-    return Character.create();
+    // return Character.create();
+    var char = this.store.createRecord('character');
+    char.save();
+    return char;
   }
 });
