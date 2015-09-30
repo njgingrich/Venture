@@ -3,7 +3,7 @@ import DS from 'ember-data';
 
 var Item = DS.Model.extend({
   character: DS.belongsTo('character'),
-  name: '',
+  name: 'Test',
   weight: 0,
   bonuses: {
     constitution: 0,

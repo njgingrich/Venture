@@ -2,26 +2,27 @@ import Ember from 'ember';
 import Item from '../models/item';
 
 export default Ember.Controller.extend({
-  character: Ember.computed.alias('model'),
+  characters: Ember.computed.alias('model'),
+  character: Ember.computed.alias('characters.firstObject'),
   hasItems: Ember.computed.notEmpty('character.items'),
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
     return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
   }),
 
   _modifyStat: function(stat, amount) {
-    this.set('model.'+stat, this.get('model.'+stat)+amount);
+    this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
 
   actions: {
     levelUp: function() {
-      this.set('model.level', this.get('model.level')+1);
+      this.set('character.level', this.get('character.level')+1);
     },
 
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
     },
     decreaseStat: function(stat) {
-      if (this.get('model.'+stat) > 0) {
+      if (this.get('character.'+stat) > 0) {
         this._modifyStat(stat, -1);
       }
     },
@@ -29,10 +30,32 @@ export default Ember.Controller.extend({
       Ember.$('.add-item-modal').modal();
     },
     addItem: function() {
-      
+      //this.get('character.items').pushObject(Item.createRandom());
+      var item = this.store.crateRecord('item', {
+        name: 'Sword of Life',
+        weight: 4,
+        constitutionBonus: 3
+      });
+      this.get('character.items').pushObject(item);
     },
     removeItem: function(item) {
       this.get('character.items').removeObject(item);
     },
+    saveCharacter: function() {
+      this.get('character').save();
+    },
+    changeCharacter: function(char) {
+      this.set('character', char);
+    },
+    addCharacter: function() {
+      var char = this.store.createRecord('character');
+      char.save();
+      this.set('character', char);
+    },
+    deleteCharacter: function(char) {
+      this.get('character').deleteRecord();
+      this.get('character').save();
+      this.set('character', this.get('characters.firstObject'));
+    }
   }
 });
