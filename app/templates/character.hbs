@@ -1,11 +1,24 @@
 {{#add-item-modal enabled=false title="Add New Item" id="add-item-modal"}}
-     Modal text. Oh boy!
+     <div>
+       <h2 class="text-center">Name</h2>
+       {{input name="itemName" type="text" required="true" action="addItem" class="form-control"}}
+     </div>
+     <div>
+       <h2 class="text-center">Weight</h2>
+       {{input name="weight" value="0" type="number" required="true" action="addItem" class="form-control"}}
+     </div>
+     <div>
+       <h2 class="text-center">Bonuses</h2>
+       <span><h3>Constitution:</h3> </span>{{input name="conBonus" value="0" type="number" required="true" action="addItem" class="form-control"}}
+       <br>
+       <span><h3>Strength:</h3> </span>{{input name="strBonus" value="0" type="number" required="true" action="addItem" class="form-control"}}
+     </div>
 {{/add-item-modal}}
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3 text-center">
     <h1 class="character-name">{{ character.name }}</h1>
     <div class="level">
-        <span class="character-detail">Level: <span class="character-level">{{ character.level }}</span></span>
+        <span class="character-detail">Level <span class="character-level">{{ character.level }}</span> {{ character.class }}</span>
     </div>
     <div class="character-detail">Health</div>
     <div class="progress">
@@ -96,7 +109,8 @@
   </div>
   <div class="col-xs-6 col-xs-offset-2">
     <div>
-      <i class="fa fa-diamond fa-3x"></i>&nbsp;<span class="character-header">Items <button class="btn btn-info" {{action 'openModal' 'add-item-modal'}}>Add</button></span>
+      <i class="fa fa-diamond fa-3x"></i>&nbsp;<span class="character-header">Items
+        <button class="btn btn-info" {{action 'openAddItemModal'}}>Add</button></span>
       {{#if hasItems}}
         <table class="centered table table-striped">
           <thead>

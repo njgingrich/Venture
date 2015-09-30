@@ -25,15 +25,14 @@ export default Ember.Controller.extend({
         this._modifyStat(stat, -1);
       }
     },
+    openAddItemModal: function() {
+      Ember.$('.add-item-modal').modal();
+    },
     addItem: function() {
-      this.get('character.items').pushObject(Item.createRandom());
+      
     },
     removeItem: function(item) {
       this.get('character.items').removeObject(item);
     },
-    openModal: function(target) {
-      var modal = Ember.Views.views[target];
-      modal.send('toggleModal');
-    }
   }
 });
