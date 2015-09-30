@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
-var Item = Ember.Object.extend({
+var Item = DS.Model.extend({
+  character: DS.belongsTo('character'),
   name: '',
   weight: 0,
   bonuses: {
@@ -8,7 +10,7 @@ var Item = Ember.Object.extend({
     strength: 0
   }
 });
-
+/*
 Item.reopenClass({
   createRandom: function() {
     return Item.create({
@@ -19,6 +21,6 @@ Item.reopenClass({
       }
     });
   }
-});
+});*/
 
 export default Item;

@@ -31,15 +31,7 @@ export default DS.Model.extend({
      return this.get('itemWeight') > this.get('maxWeight');
   }),
 
-  items: Ember.computed(function() {
-    return [Item.create({
-      name: "Magic Sword of Life",
-      weight: 10,
-      bonuses: {
-        constitution: 3
-      }
-    })];
-  }),
+  items: DS.hasMany('items'),
 
   itemConBonuses: Ember.computed.mapBy('items', 'bonuses.constitution'),
   conBonus: Ember.computed.sum('itemConBonuses'),
