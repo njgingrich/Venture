@@ -1,3 +1,6 @@
+{{#add-item-modal enabled=false title="Add New Item" id="add-item-modal"}}
+     Modal text. Oh boy!
+{{/add-item-modal}}
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3 text-center">
     <h1 class="character-name">{{ character.name }}</h1>
@@ -93,7 +96,7 @@
   </div>
   <div class="col-xs-6 col-xs-offset-2">
     <div>
-      <i class="fa fa-diamond fa-3x"></i>&nbsp;<span class="character-header">Items <button class="btn btn-info" {{ action 'addItem' }}>Add</button></span>
+      <i class="fa fa-diamond fa-3x"></i>&nbsp;<span class="character-header">Items <button class="btn btn-info" {{action 'openModal' 'add-item-modal'}}>Add</button></span>
       {{#if hasItems}}
         <table class="centered table table-striped">
           <thead>
