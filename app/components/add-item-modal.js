@@ -3,19 +3,21 @@ import modalLayout from '../templates/components/add-item-modal';
 import character from '../controllers/character';
 
 export default Ember.Component.extend({
+  itemName: "Magic Sword",
+  weight: 0,
+  conBonus: 0,
+  strBonus: 0,
+
   actions: {
     ok: function() {
-      //this.get('character.items').pushObject(Item.create());
-      // apparently don't do this
-      var store = this.get('targetObject.store');
-      var sword = store.createRecord('item', {
-        name: 'Sword of Life',
-        weight: 4,
-        constitutionBonus: 3
-      });
-      character.get('items').pushObject(sword);
+      var name = this.get('itemName');
+      var weight = this.get('weight');
+      var bonuses = {
+        constitution: this.get('conBonus'),
+        strength: this.get('strBonus')
+      };
+      this.sendAction('action', name, weight, bonuses);
       this.$('.add-item-modal').modal('hide');
-      this.sendAction('ok');
     }
   },
   show: function() {

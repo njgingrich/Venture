@@ -29,14 +29,15 @@ export default Ember.Controller.extend({
     openAddItemModal: function() {
       Ember.$('.add-item-modal').modal();
     },
-    addItem: function() {
-      //this.get('character.items').pushObject(Item.createRandom());
-      var item = this.store.crateRecord('item', {
-        name: 'Sword of Life',
-        weight: 4,
-        constitutionBonus: 3
+    addItem: function(name, weight, bonuses) {
+      debugger;
+      var item = this.store.createRecord('item', {
+        name: name,
+        weight: weight,
+        bonuses: bonuses
       });
       this.get('character.items').pushObject(item);
+      item.save();
     },
     removeItem: function(item) {
       this.get('character.items').removeObject(item);
@@ -54,8 +55,11 @@ export default Ember.Controller.extend({
     },
     deleteCharacter: function(char) {
       this.get('character').deleteRecord();
-      this.get('character').save();
-      this.set('character', this.get('characters.firstObject'));
+      var that = this;
+      this.get('character').save().then(function() {
+        that.set('character');
+        //that.set('character', that.get('characters.firstObject'));
+      });
     }
   }
 });

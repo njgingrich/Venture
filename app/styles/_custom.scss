@@ -5,6 +5,7 @@
 $characterHealth:  #e51227;
 $characterMana:    #2cb9ce;
 $characterLevel:   #1eb630;
+$brand-success:    #5cb85c;
 
 .character-name {
   font-weight: bold;
@@ -36,4 +37,11 @@ $characterLevel:   #1eb630;
 .centered {
     float: none;
     margin: 0 auto;
+}
+
+.level-circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: $brand-success;
 }

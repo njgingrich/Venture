@@ -1,25 +1,11 @@
-{{#add-item-modal enabled=false title="Add New Item" id="add-item-modal"}}
-     <div>
-       <h2 class="text-center">Name</h2>
-       {{input name="itemName" type="text" required="true" action="addItem" class="form-control"}}
-     </div>
-     <div>
-       <h2 class="text-center">Weight</h2>
-       {{input name="weight" value="0" type="number" required="true" action="addItem" class="form-control"}}
-     </div>
-     <div>
-       <h2 class="text-center">Bonuses</h2>
-       <span><h3>Constitution:</h3> </span>{{input name="conBonus" value="0" type="number" required="true" action="addItem" class="form-control"}}
-       <br>
-       <span><h3>Strength:</h3> </span>{{input name="strBonus" value="0" type="number" required="true" action="addItem" class="form-control"}}
-     </div>
+{{#add-item-modal action="addItem" enabled=false title="Add New Item" id="add-item-modal"}}
 {{/add-item-modal}}
 <div class="row">
   <div class="col-xs-3">
     <ul>
       {{#each characters as |char|}}
         <li>
-          <button class="btn btn-default" {{action 'changeCharacter' char}}>{{char.name}} <span class="level-circle">{{char.level}}</span></button>
+          <button class="btn btn-default" {{action 'changeCharacter' char}}>{{char.name}} <span class="">{{char.level}}</span></button>
         </li>
       {{/each}}
       <li>

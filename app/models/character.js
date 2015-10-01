@@ -31,7 +31,7 @@ export default DS.Model.extend({
      return this.get('itemWeight') > this.get('maxWeight');
   }),
 
-  items: DS.hasMany('items'),
+  items: DS.hasMany('items', {async: true}),
 
   itemConBonuses: Ember.computed.mapBy('items', 'bonuses.constitution'),
   conBonus: Ember.computed.sum('itemConBonuses'),

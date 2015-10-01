@@ -6,7 +6,20 @@
         <h4 class="modal-title">{{title}}</h4>
       </div>
       <div class="modal-body">
-        {{yield}}
+        <div>
+          <h2 class="text-center">Name</h2>
+          {{input value=itemName type="text" required="true" action="addItem" class="form-control"}}
+        </div>
+        <div>
+          <h2 class="text-center">Weight</h2>
+          {{input value=weight type="number" required="true" action="addItem" class="form-control"}}
+        </div>
+        <div>
+          <h2 class="text-center">Bonuses</h2>
+          <span><h3>Constitution:</h3> </span>{{input value=conBonus type="number" required="true" action="addItem" class="form-control"}}
+          <br>
+          <span><h3>Strength:</h3> </span>{{input value=strBonus type="number" required="true" action="addItem" class="form-control"}}
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
