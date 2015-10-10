@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import modalLayout from '../templates/components/add-item-modal';
 import character from '../controllers/character';
 
 export default Ember.Component.extend({

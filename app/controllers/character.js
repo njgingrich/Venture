@@ -30,7 +30,6 @@ export default Ember.Controller.extend({
       Ember.$('.add-item-modal').modal();
     },
     addItem: function(name, weight, bonuses) {
-      debugger;
       var item = this.store.createRecord('item', {
         name: name,
         weight: weight,
