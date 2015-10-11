@@ -7,10 +7,10 @@ export default Ember.Component.extend({
 
     actions: {
         decreaseStat: function(stat) {
-            this.sendAction(stat);
+            this.sendAction('decrease', stat.toLowerCase());
         },
         increaseStat: function(stat) {
-            this.sendAction(stat);
+            this.sendAction('increase', stat.toLowerCase());
         }
     }
 });

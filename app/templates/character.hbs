@@ -69,12 +69,12 @@
               </tr>
             </thead>
             <tbody>
-              {{char-attribute stat="Strength"     characterStat=character.strength }}
-              {{char-attribute stat="Constitution" characterStat=character.constitution}}
-              {{char-attribute stat="Intelligence" characterStat=character.intelligence}}
-              {{char-attribute stat="Wisdom"       characterStat=character.wisdom}}
-              {{char-attribute stat="Dexterity"    characterStat=character.dexterity}}
-              {{char-attribute stat="Charisma"     characterStat=character.charisma}}
+              {{char-attribute stat="Strength"     characterStat=character.strength     increase="increaseStat" decrease="decreaseStat" param=stat}}
+              {{char-attribute stat="Constitution" characterStat=character.constitution increase="increaseStat" decrease="decreaseStat" param=stat}}
+              {{char-attribute stat="Intelligence" characterStat=character.intelligence increase="increaseStat" decrease="decreaseStat" param=stat}}
+              {{char-attribute stat="Wisdom"       characterStat=character.wisdom       increase="increaseStat" decrease="decreaseStat" param=stat}}
+              {{char-attribute stat="Dexterity"    characterStat=character.dexterity    increase="increaseStat" decrease="decreaseStat" param=stat}}
+              {{char-attribute stat="Charisma"     characterStat=character.charisma     increase="increaseStat" decrease="decreaseStat" param=stat}}
             </tbody>
           </table>
         </div>

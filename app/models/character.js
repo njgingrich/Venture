@@ -38,10 +38,10 @@ export default DS.Model.extend({
       return this.get('constitution') + this.get('conBonus');
   }),
   level:        DS.attr('number', {defaultValue: 1}),
-  strength:     DS.attr('number', {defaultValue: 12}),
-  constitution: DS.attr('number', {defaultValue: 15}),
-  intelligence: DS.attr('number', {defaultValue: 4}),
-  wisdom:       DS.attr('number', {defaultValue: 6}),
+  strength:     DS.attr('number', {defaultValue: 10}),
+  constitution: DS.attr('number', {defaultValue: 10}),
+  intelligence: DS.attr('number', {defaultValue: 10}),
+  wisdom:       DS.attr('number', {defaultValue: 10}),
   dexterity:    DS.attr('number', {defaultValue: 10}),
-  charisma:     DS.attr('number', {defaultValue: 13})
+  charisma:     DS.attr('number', {defaultValue: 10})
 });
