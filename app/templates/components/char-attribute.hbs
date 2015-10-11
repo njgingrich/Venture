@@ -1,1 +1,4 @@
-{{yield}}
+<td class="col-sm-6">{{stat}}</td>
+<td class="col-sm-2">{{character.strength}}</td>
+<td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" stat}}>-</button></td>
+<td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" stat}}>+</button></td>

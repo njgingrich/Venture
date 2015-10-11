@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Item from '../models/item';
 
 export default Ember.Controller.extend({
   characters: Ember.computed.alias('model'),
@@ -8,7 +7,7 @@ export default Ember.Controller.extend({
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
     return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
   }),
-
+  statList: ["Strength", "Wisdom", "Intelligence", "Charisma", "Constitution", "Charisma"],
   _modifyStat: function(stat, amount) {
     this.set('character.'+stat, this.get('character.'+stat)+amount);
   },

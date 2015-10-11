@@ -69,42 +69,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="col-sm-6">Strength</td>
-                <td class="col-sm-2">{{ character.strength }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "strength"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "strength"}}>+</button></td>
-              </tr>
-              <tr>
-                <td class="col-sm-6">Intelligence</td>
-                <td class="col-sm-2">{{ character.intelligence }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "intelligence"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "intelligence"}}>+</button></td>
-              </tr>
-              <tr>
-                <td class="col-sm-6">Wisdom</td>
-                <td class="col-sm-2">{{ character.wisdom }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "wisdom"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "wisdom"}}>+</button></td>
-              </tr>
-              <tr>
-                <td class="col-sm-6">Dexterity</td>
-                <td class="col-sm-2">{{ character.dexterity }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "dexterity"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "dexterity"}}>+</button></td>
-              </tr>
-              <tr>
-                <td class="col-sm-6">Constitution</td>
-                <td class="col-sm-2">{{ character.constitution }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "constitution"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "constitution"}}>+</button></td>
-              </tr>
-              <tr>
-                <td class="col-sm-6">Charisma</td>
-                <td class="col-sm-2">{{ character.charisma }}</td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat" "charisma"}}>-</button></td>
-                <td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat" "charisma"}}>+</button></td>
-              </tr>
+              {{#each statList as |stat|}}
+                {{char-attribute stat=stat character=character}}
+              {{/each}}
             </tbody>
           </table>
         </div>
