@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import Item from './item';
 
 const BASE_HP = 40;
 const BASE_MANA = 30;
@@ -40,9 +39,9 @@ export default DS.Model.extend({
   }),
   level:        DS.attr('number', {defaultValue: 1}),
   strength:     DS.attr('number', {defaultValue: 12}),
+  constitution: DS.attr('number', {defaultValue: 15}),
   intelligence: DS.attr('number', {defaultValue: 4}),
   wisdom:       DS.attr('number', {defaultValue: 6}),
   dexterity:    DS.attr('number', {defaultValue: 10}),
-  constitution: DS.attr('number', {defaultValue: 15}),
   charisma:     DS.attr('number', {defaultValue: 13})
 });

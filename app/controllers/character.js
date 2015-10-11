@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
     return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
   }),
-  statList: ["Strength", "Wisdom", "Intelligence", "Charisma", "Constitution", "Charisma"],
   _modifyStat: function(stat, amount) {
     this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
@@ -34,8 +33,8 @@ export default Ember.Controller.extend({
         weight: weight,
         bonuses: bonuses
       });
-      this.get('character.items').pushObject(item);
       item.save();
+      this.get('character.items').pushObject(item);
     },
     removeItem: function(item) {
       this.get('character.items').removeObject(item);

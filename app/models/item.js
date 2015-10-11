@@ -1,26 +1,13 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 
 var Item = DS.Model.extend({
   character: DS.belongsTo('character'),
-  name: '',
-  weight: 0,
-  bonuses: {
+  name:   DS.attr('string', {defaultValue: ''}),
+  weight: DS.attr('number', {defaultValue: 0}),
+  bonuses: DS.attr('item-bonuses', {defaultValue: {
     constitution: 0,
     strength: 0
-  }
+  }})
 });
-/*
-Item.reopenClass({
-  createRandom: function() {
-    return Item.create({
-      name: "Magic Sword of Life",
-      weight: 10,
-      bonuses: {
-        constitution: 3
-      }
-    });
-  }
-});*/
 
 export default Item;

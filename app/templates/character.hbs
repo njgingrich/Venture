@@ -69,9 +69,12 @@
               </tr>
             </thead>
             <tbody>
-              {{#each statList as |stat|}}
-                {{char-attribute stat=stat character=character}}
-              {{/each}}
+              {{char-attribute stat="Strength"     characterStat=character.strength }}
+              {{char-attribute stat="Constitution" characterStat=character.constitution}}
+              {{char-attribute stat="Intelligence" characterStat=character.intelligence}}
+              {{char-attribute stat="Wisdom"       characterStat=character.wisdom}}
+              {{char-attribute stat="Dexterity"    characterStat=character.dexterity}}
+              {{char-attribute stat="Charisma"     characterStat=character.charisma}}
             </tbody>
           </table>
         </div>

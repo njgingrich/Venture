@@ -3,10 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     tagName: 'tr',
     stat: "",
-    character: null,
-    getStat: function(stat) {
-        return this.get('character.'+stat);
-    },
+    characterStat: 0,
 
     actions: {
         decreaseStat: function(stat) {
