@@ -2,15 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagName: 'tr',
-    stat: "",
-    characterStat: 0,
 
     actions: {
-        decreaseStat: function(stat) {
-            this.sendAction('decrease', stat.toLowerCase());
+        decreaseStat: function() {
+            this.set('stat', this.get('stat')-1);
         },
-        increaseStat: function(stat) {
-            this.sendAction('increase', stat.toLowerCase());
+        increaseStat: function() {
+            this.set('stat', this.get('stat')+1);
         }
     }
 });

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import character from '../controllers/character';
 
 export default Ember.Component.extend({
   itemName: "Magic Sword",
