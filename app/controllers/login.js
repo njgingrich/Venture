@@ -7,6 +7,8 @@ export default Ember.Controller.extend(LoginControllerMixin, {
     password: "",
 
     actions: {
-
+      login: function() {
+        console.log("logged in with email ", this.get('identification'), "and pass ", this.get('password'));
+      }
     }
 });
