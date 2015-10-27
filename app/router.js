@@ -6,11 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('map');
-  this.route('characters');
   this.route('login');
   this.route('authenticated', function() {
       this.route('secret');
+      this.route('map');
+      this.route('characters');
   });
 });
 

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="jumbotron text-center"><h2>{{name}}</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="row">
+                Char
+            </div>
+            <div class="row">
+                Width: {{input value=mapWidth size="3"}}
+                Height: {{input value=mapHeight size="3"}}
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <button type="button" class="btn btn-default" {{action "movePlayer" "up"}}><i class="fa fa-arrow-up fa-2x"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button type="button" class="btn btn-default" {{action "movePlayer" "left"}}><i class="fa fa-arrow-left fa-2x"></i></button>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <button type="button" class="btn btn-default" {{action "movePlayer" "right"}}><i class="fa fa-arrow-right fa-2x"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <button type="button" class="btn btn-default" {{action "movePlayer" "down"}}><i class="fa fa-arrow-down fa-2x"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-10">    
+            <table class="table table-bordered">
+                <tbody>
+                    {{#each map.rows as |row|}}
+                    <tr>
+                        {{#each row.cells as |cell|}}
+                        <td class="text-center">{{cell.text}}</td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--
+Map
+-------------------------------------------------
++-----+  +--------------------------------------+
+|     |  |                                      |
+|     |  |                                      |
+|     |  |                                      |
+|     |  |                                      |
++-----+  |                                      |
+  /\     |                                      |
+<    >   |                                      |
+  \/     |                                      |
+         +--------------------------------------+
+-->
