@@ -18,7 +18,7 @@
       <div class="col-xs-6 col-xs-offset-3 text-center">
         <h1 class="character-name">{{ character.name }}</h1>
         <div class="level">
-            <span class="character-detail">Level <span class="character-level">{{ character.level }}</span> {{ character.class }}</span>
+            <span class="character-detail">Level <span class="character-level">{{ character.level }}</span> {{ character.characterClass }}</span>
         </div>
         <button class="btn btn-success" {{action "saveCharacter"}}>Save</button>
         <button class="btn btn-danger" {{action 'deleteCharacter' character}}>Delete</button>

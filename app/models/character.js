@@ -12,7 +12,7 @@ export default DS.Model.extend({
                 lastNames[Math.floor(Math.random()*lastNames.length)];
         }
     }),
-    class: DS.attr('string', {defaultValue: function() {
+    characterClass: DS.attr('string', {defaultValue: function() {
             var classes = ['Wizard', 'Warrior', 'Bard', 'Paladin', 'Rogue', 'Ranger', 'Knight', 'Elf'];
             return classes[Math.floor(Math.random()*classes.length)];
         }
