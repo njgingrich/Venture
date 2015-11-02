@@ -58,5 +58,21 @@ export default Ember.Controller.extend({
         //that.set('character', that.get('characters.firstObject'));
       });
     }
+  },
+  validations: {
+      'user.name': {
+          presence: true,
+          length: {minimum: 4}
+          message: "Name must be at least 4 characters"
+      },
+      'user.level': {
+          presence: true,
+          numericality: {
+              onlyInteger: true,
+              greaterThan: 0
+          }
+          message: "Level must be greater than 1"
+      }
+  }
   }
 });
