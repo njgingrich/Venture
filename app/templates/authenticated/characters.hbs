@@ -15,15 +15,15 @@
   </div>
   <div class="col-xs-9">
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3 text-center">
-        {{ input type="text" value=character.name }}
+      <div class="col-xs-6 col-xs-offset-3 text-center {{if errors.character.name "has-error"}}">
+        {{ input type="text" class="form-control" value=character.name }}
         {{#each errors.character.name as |err|}}
             <span class="label label-danger">{{ err }}</span>
         {{/each}}
         <div class="level">
             <span class="character-detail">Level <span class="character-level">{{ character.level }}</span> {{ character.characterClass }}</span>
         </div>
-        <button class="btn btn-success" {{action 'saveCharacter'}}>Save</button>
+        <button class="btn btn-success" disabled={{unless isValid "disabled"}} {{action 'saveCharacter'}}>Save</button>
         <button class="btn btn-danger" {{action 'deleteCharacter' character}}>Delete</button>
         <div class="character-detail">Health</div>
         <div class="progress">
@@ -61,7 +61,8 @@
     <div class="row">
       <div class="col-xs-4">
         <div>
-          <i class="fa fa-bar-chart-o fa-3x"></i>&nbsp;<span class="character-header">Stats <button class="btn btn-info" {{ action 'levelUp' }}>Level Up</button></span>
+          <i class="fa fa-bar-chart-o fa-3x"></i>&nbsp;<span class="character-header">Stats 
+              <button class="btn btn-info" {{ action 'levelUp' }}>Level Up</button></span>
           <table class="centered table table-striped">
             <thead>
               <tr>

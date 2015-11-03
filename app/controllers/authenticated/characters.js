@@ -14,7 +14,11 @@ export default Ember.Controller.extend(EmberValidations, {
 
     actions: {
         levelUp: function() {
-            this.set('character.level', this.get('character.level')+1);
+            this.incrementProperty('character.level');
+            this.send('showModal', {
+                template: 'components/level-up-modal',
+                character: this.get('character')
+            });
         },
         increaseStat: function(stat) {
             this._modifyStat(stat, 1);
@@ -64,6 +68,12 @@ export default Ember.Controller.extend(EmberValidations, {
     validations: {
         'character.name': {
             presence: true,
+            length: {
+                minimum: 4,
+                messages: {
+                    tooShort: "must be at least 4 characters"
+                }
+            },
             message: "can't be blank"
         },
         'character.level': {
