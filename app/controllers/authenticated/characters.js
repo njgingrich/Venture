@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
     characters: Ember.computed.alias('model'),
     character: Ember.computed.alias('characters.firstObject'),
     hasItems: Ember.computed.notEmpty('character.items'),
@@ -23,49 +23,50 @@ export default Ember.Controller.extend({
             if (this.get('character.'+stat) > 0) {
                 this._modifyStat(stat, -1);
             }
+        },
+        openAddItemModal: function() {
+            Ember.$('.add-item-modal').modal();
+        },
+        addItem: function(name, weight, bonuses) {
+            var item = this.store.createRecord('item', {
+                name: name,
+                weight: weight,
+                bonuses: bonuses
+            });
+            item.save();
+            this.get('character.items').pushObject(item);
+        },
+        removeItem: function(item) {
+            this.get('character.items').removeObject(item);
+        },
+        saveCharacter: function() {
+            if(this.get('isValid')) {
+                this.get('character').save();
+            }
+        },
+        changeCharacter: function(char) {
+            this.set('character', char);
+        },
+        addCharacter: function() {
+            var char = this.store.createRecord('character');
+            char.save();
+            this.set('character', char);
+        },
+        deleteCharacter: function(char) {
+            this.get('character').deleteRecord();
+            var that = this;
+            this.get('character').save().then(function() {
+                that.set('character');
+                //that.set('character', that.get('characters.firstObject'));
+            });
         }
     },
-    openAddItemModal: function() {
-        Ember.$('.add-item-modal').modal();
-    },
-    addItem: function(name, weight, bonuses) {
-        var item = this.store.createRecord('item', {
-            name: name,
-            weight: weight,
-            bonuses: bonuses
-        });
-        item.save();
-        this.get('character.items').pushObject(item);
-    },
-    removeItem: function(item) {
-        this.get('character.items').removeObject(item);
-    },
-    saveCharacter: function() {
-        this.get('character').save();
-    },
-    changeCharacter: function(char) {
-        this.set('character', char);
-    },
-    addCharacter: function() {
-        var char = this.store.createRecord('character');
-        char.save();
-        this.set('character', char);
-    },
-    deleteCharacter: function(char) {
-        this.get('character').deleteRecord();
-        var that = this;
-        this.get('character').save().then(function() {
-            that.set('character');
-            //that.set('character', that.get('characters.firstObject'));
-        });
-    },
     validations: {
-        'user.name': {
+        'character.name': {
             presence: true,
-            length: {minimum: 4},
-            message: "Name must be at least 4 characters"
+            message: "can't be blank"
         },
-        'user.level': {
+        'character.level': {
             presence: true,
             numericality: {
                 onlyInteger: true,

@@ -17,10 +17,13 @@
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3 text-center">
         {{ input type="text" value=character.name }}
+        {{#each errors.character.name as |err|}}
+            <span class="label label-danger">{{ err }}</span>
+        {{/each}}
         <div class="level">
             <span class="character-detail">Level <span class="character-level">{{ character.level }}</span> {{ character.characterClass }}</span>
         </div>
-        <button class="btn btn-success" {{action "saveCharacter"}}>Save</button>
+        <button class="btn btn-success" {{action 'saveCharacter'}}>Save</button>
         <button class="btn btn-danger" {{action 'deleteCharacter' character}}>Delete</button>
         <div class="character-detail">Health</div>
         <div class="progress">
@@ -114,11 +117,4 @@
     </div>
   </div>
 </div>
-<!--
-Change model to be promise (list of characters?)
-in route's model return all the characters from store (findAll)
-make regular screen just use first character (characters.firstObject)
-make 'characters' the model, not 'character'
-if you wanted to add, make an action (then create char, save, pushObject(actually dont pushObject))
 
--->
