@@ -1,0 +1,39 @@
+<div id="myModal" class="modal fade in" style="display: block;" data-backdrop="" role="dialog">
+    <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" {{action 'closeModal'}}>&times;</button>
+                <h4 class="modal-title">Level Up Stats</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Points left: {{pointsLeft}}</h4>
+                <table class="centered table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-sm-6">Stat</th>
+                            <th class="col-sm-2">Value</th>
+                            <th class="col-sm-2">Lower</th>
+                            <th class="col-sm-2">Raise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{char-attribute label="Strength"     stat=character.strength     pointsLeft=pointsLeft}}
+                        {{char-attribute label="Constitution" stat=character.constitution pointsLeft=pointsLeft}}
+                        {{char-attribute label="Intelligence" stat=character.intelligence pointsLeft=pointsLeft}}
+                        {{char-attribute label="Wisdom"       stat=character.wisdom       pointsLeft=pointsLeft}}
+                        {{char-attribute label="Dexterity"    stat=character.dexterity    pointsLeft=pointsLeft}}
+                        {{char-attribute label="Charisma"     stat=character.charisma     pointsLeft=pointsLeft}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                {{#if hasPointsLeft}}
+                    <button type="button" class="btn btn-success" disabled="disabled">Level Up</button>
+                {{else}}
+                    <button type="button" class="btn btn-success" {{action 'levelUp'}}>Level Up</button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

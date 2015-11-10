@@ -10,7 +10,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
             });
         },
         showModal: function(params) {
-            console.log('in show modal');
             this.render(params.template, {
                 into: 'application',
                 outlet: 'modal',

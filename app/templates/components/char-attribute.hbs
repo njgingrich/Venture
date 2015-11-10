@@ -1,4 +1,4 @@
 <td class="col-sm-6">{{label}}</td>
 <td class="col-sm-2">{{stat}}</td>
 <td class="col-sm-2"><button class="btn btn-info" {{action "decreaseStat"}}>-</button></td>
-<td class="col-sm-2"><button class="btn btn-info" {{action "increaseStat"}}>+</button></td>
+<td class="col-sm-2"><button disabled={{unless hasPointsLeft 'disabled'}} class="btn btn-info" {{action "increaseStat"}}>+</button></td>
