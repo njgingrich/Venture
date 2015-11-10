@@ -11,7 +11,8 @@ Router.map(function() {
       this.route('secret');
       this.route('map');
       this.route('characters');
-  this.route('add-character');
+      this.route('add-character');
+      this.route('play', {path: '/play/:char'});
   });
 });
 
