@@ -1,19 +1,27 @@
 {{#add-item-modal action="addItem" enabled=false title="Add New Item" id="add-item-modal"}}
 {{/add-item-modal}}
 <div class="row">
-  <ul>
-    {{#each characters as |char|}}
-      <li>
-        <button class="btn btn-default">
-          {{#link-to 'authenticated.play' char}}
-            {{char.name}} ({{char.level}})
-          {{/link-to}}
-        </button>
-      </li>
-    {{/each}}
-    <li>
-      <button class="btn btn-default">{{#link-to 'authenticated.add-character'}}Add{{/link-to}}</button>
-    </li>
-  </ul>
+      <table class="table">
+        <thead></thead>
+        <tbody>
+            {{#each characters as |char|}}
+                <tr>
+                  <td>
+                      <button class="btn btn-default">
+                        {{#link-to 'authenticated.play' char}}
+                          {{char.name}} ({{char.level}})
+                        {{/link-to}}
+                      </button>
+                  </td>
+                  <td>
+                      <button class="btn btn-default" {{action 'deleteCharacter' char.id}}>X</button>
+                  </td>
+                </tr>
+            {{/each}}
+            <tr>
+              <button class="btn btn-default">{{#link-to 'authenticated.add-character'}}Add{{/link-to}}</button>
+          </tr>
+        </tbody>
+      </table>
 </div>
 

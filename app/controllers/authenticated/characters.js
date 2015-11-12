@@ -1,6 +1,13 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(EmberValidations, {
-    characters: Ember.computed.alias('model')
+export default Ember.Controller.extend({
+    characters: Ember.computed.alias('model'),
+
+    actions: {
+        deleteCharacter: function(id) {
+            this.store.find('character', id).then(function(character) {
+                character.destroyRecord();
+            });
+        }
+    }
 });

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
     character: Ember.computed.alias('model'),
     hasItems: Ember.computed.notEmpty('character.items'),
     burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
@@ -36,24 +36,20 @@ export default Ember.Controller.extend({
         },
         saveCharacter: function() {
             if(this.get('isValid')) {
-                this.get('character').save();
+              this.get('character').save().then(() => {
+                this.transitionToRoute('authenticated.characters');
+              });
             }
         },
-        changeCharacter: function(char) {
-            this.set('character', char);
-        },
-        addCharacter: function() {
-            var char = this.store.createRecord('character');
-            char.save();
-            this.set('character', char);
-        },
-        deleteCharacter: function(char) {
+        deleteCharacter: function() {
             this.get('character').deleteRecord();
-            var that = this;
-            this.get('character').save().then(function() {
-                that.set('character');
-                //that.set('character', that.get('characters.firstObject'));
+            this.get('character').save().then(() => {
+               this.transitionToRoute('authenticated.characters');
             });
+        },
+        randomizeCharacter: function() {
+            var randomCharacter = this.get('RandomCharacterGenerator').randomize();
+            this.set('character', randomCharacter);
         }
     },
     validations: {

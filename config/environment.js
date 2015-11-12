@@ -2,6 +2,13 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'font-src': "'self' 'https://maxcdn.bootstrapcdn.com'",
+      'img-src': "'self'",
+      'media-src': "'self'",
+      'style-src': "'self' 'unsafe-inline'"
+    },
     modulePrefix: 'venture',
     environment: environment,
     baseURL: '/',
@@ -18,7 +25,7 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-    
+
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:devise',
     routeAfterAuthentication: 'authenticated.characters'

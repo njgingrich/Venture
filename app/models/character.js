@@ -40,11 +40,12 @@ export default DS.Model.extend({
     effectiveCon: Ember.computed('conBonus', 'constitution', function() {
         return this.get('constitution') + this.get('conBonus');
     }),
-    level:        DS.attr('number', {defaultValue: 1}),
-    strength:     DS.attr('number', {defaultValue: 10}),
-    constitution: DS.attr('number', {defaultValue: 10}),
-    intelligence: DS.attr('number', {defaultValue: 10}),
-    wisdom:       DS.attr('number', {defaultValue: 10}),
-    dexterity:    DS.attr('number', {defaultValue: 10}),
-    charisma:     DS.attr('number', {defaultValue: 10})
+    pointsToSpend: DS.attr('number', {defaultValue: 20}),
+    level:         DS.attr('number', {defaultValue: 1}),
+    strength:      DS.attr('number', {defaultValue: 1}),
+    constitution:  DS.attr('number', {defaultValue: 1}),
+    intelligence:  DS.attr('number', {defaultValue: 1}),
+    wisdom:        DS.attr('number', {defaultValue: 1}),
+    dexterity:     DS.attr('number', {defaultValue: 1}),
+    charisma:      DS.attr('number', {defaultValue: 1})
 });
