@@ -5,6 +5,7 @@ export default Ember.Route.extend({
         return this.store.findRecord('character', params.character).then(char => {
             return this.store.query('world-view', { character_id: char.get('id') }).then((worldViews) => {
                 var view = worldViews.get('firstObject');
+                // do something with worldview?
                 return char;
             });
         });
