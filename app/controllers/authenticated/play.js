@@ -4,10 +4,11 @@ export default Ember.Controller.extend({
     mapWidth: 20,
     mapHeight: 20,
     map: Ember.inject.service(),
-    
+
     character: Ember.computed.alias('model'),
 
     rows: Ember.computed('map.allCells','map.updateCount', 'mapWidth', 'mapHeight', 'character.{x,y}', function() {
+        debugger;
         var w = parseInt(this.get('mapWidth'), 10);
         var h = parseInt(this.get('mapHeight'), 10);
         var startX = this.get('character.x') - Math.floor(w/2);
@@ -34,7 +35,7 @@ export default Ember.Controller.extend({
 
         return rows;
     }),
-  
+
     init: function() {
         this.set('name', 'The Hopeful Forest');
     },

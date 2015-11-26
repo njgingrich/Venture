@@ -5,7 +5,7 @@ export default Ember.Route.extend({
         return this.store.findAll('character');
     }*/
     model: function() {
-        let charPromise = this.store.findAll('character');
+        /*let charPromise = this.store.findAll('character');
         return new Ember.RSVP.Promise((resolve, reject) => {
             return Ember.run.later(() => {
                 charPromise.then(chars => {
@@ -16,6 +16,7 @@ export default Ember.Route.extend({
                     }
                 });
             }, 2000);
-        }).then(null, err => {alert(err.error)});
+        }).then(null, err => {alert(err.error);});*/
+        return this.store.findAll('character');
     },
 });

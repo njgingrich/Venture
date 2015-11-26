@@ -6,8 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login', {path: '/'});
-  this.route('authenticated', function() {
+  this.route('login');
+  this.route('authenticated', {path: '/'}, function() {
       this.route('secret');
       this.route('map');
       this.route('characters');
