@@ -47,5 +47,7 @@ export default DS.Model.extend({
     intelligence:  DS.attr('number', {defaultValue: 1}),
     wisdom:        DS.attr('number', {defaultValue: 1}),
     dexterity:     DS.attr('number', {defaultValue: 1}),
-    charisma:      DS.attr('number', {defaultValue: 1})
+    charisma:      DS.attr('number', {defaultValue: 1}),
+    x: DS.attr('number'),
+    y: DS.attr('number')
 });
