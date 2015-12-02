@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from 'venture/tests/helpers/start-app';
+import Pretender from 'pretender';
 
 module('Acceptance | characters', {
   beforeEach: function() {
@@ -8,16 +9,11 @@ module('Acceptance | characters', {
   },
 
   afterEach: function() {
+    if(server) {
+        server.shutdown();
+    }
     Ember.run(this.application, 'destroy');
   }
-});
-
-test('user has to log in to see characters', function(assert) {
-  visit('/characters');
-
-  andThen(function() {
-    assert.equal(currentURL(), '/login');
-  });
 });
 
 Ember.Test.registerAsyncHelper('resumablePause', function(app) {
@@ -30,13 +26,39 @@ Ember.Test.registerAsyncHelper('resumablePause', function(app) {
     }, 'Test Adapter paused');
 });
 
-test('can view characters when logged in', function(assert) {
-    visit('/characters');
-    andThen(function() {
-        assert.equal(currentURL(), '/characters');
-    });
+Ember.Test.registerAsyncHelper('seeOn', function(app, assert, url) {
+    assert.equal(currentURL(), url);
+});
 
-    fillIn('.app-email', 'foo@bar.com');
-    fillIn('.app-password', '123456');
-    click('.app-submit');
+Ember.Test.registerAsyncHelper('loginAs', function(app, u, p) {
+    fillIn('.app-email', u);
+    fillIn('.app-password', p);
+    click('button');
+});
+
+test('user has to log in to see characters', function(assert) {
+  visit('/characters');
+  seeOn(assert, '/login');
+});
+
+test('can view characters when logged in', function(assert) {
+    andThen(() => {
+        var server = new Pretender(function() {
+            this.post('/users/sign_in', function(request) {
+               return [201, {}, JSON.stringify({
+                   token: 'something',
+                   email: 'test@example.com'
+               })];
+            });
+            this.get('/characters', function(request) {
+               return [200, {}, JSON.stringify({
+                   characters: []
+               })]
+            });
+        });
+    });
+    visit('/characters');
+    seeOn(assert, '/login');
+    window.loginAs('foo@bar.com', '123456');
+    seeOn(assert, '/characters');
 });
