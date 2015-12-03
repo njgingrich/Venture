@@ -55,6 +55,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.STORE = 'simple-auth-session-store:ephemeral';
   }
 
   if (environment === 'production') {

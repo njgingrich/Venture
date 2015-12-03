@@ -37,28 +37,27 @@ Ember.Test.registerAsyncHelper('loginAs', function(app, u, p) {
 });
 
 test('user has to log in to see characters', function(assert) {
-  visit('/characters');
-  seeOn(assert, '/login');
+    visit('/characters');
+    window.seeOn(assert, '/login');
 });
 
+var server;
 test('can view characters when logged in', function(assert) {
-    andThen(() => {
-        var server = new Pretender(function() {
-            this.post('/users/sign_in', function(request) {
-               return [201, {}, JSON.stringify({
-                   token: 'something',
-                   email: 'test@example.com'
-               })];
-            });
-            this.get('/characters', function(request) {
-               return [200, {}, JSON.stringify({
-                   characters: []
-               })]
-            });
+    window.visit('/characters');
+    window.seeOn(assert, '/login');
+    server = new Pretender(function() {
+        this.post('/users/sign_in', function(request) {
+            return [201, {}, JSON.stringify({
+                token: 'something',
+                email: 'test@example.com'
+            })];
+        });
+        this.get('/characters', function() {
+            return [200, {}, JSON.stringify({
+                characters: []
+            })];
         });
     });
-    visit('/characters');
-    seeOn(assert, '/login');
     window.loginAs('foo@bar.com', '123456');
-    seeOn(assert, '/characters');
+    window.seeOn(assert, '/characters');
 });
